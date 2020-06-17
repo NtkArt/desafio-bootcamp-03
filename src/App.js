@@ -37,14 +37,18 @@ function App() {
   return (
     <div>
       <ul data-testid="repository-list">
-        {repositorys.map((repository) => (
-          <li key={repository.id}>
-            {repository.title}
-            <button onClick={() => handleRemoveRepository(repository.id)}>
-              Remover
-            </button>
-          </li>
-        ))}
+        {repositorys.length > 0 ? (
+          repositorys.map((repository) => (
+            <li key={repository.id}>
+              {repository.title}
+              <button onClick={() => handleRemoveRepository(repository.id)}>
+                Remover
+              </button>
+            </li>
+          ))
+        ) : (
+          <h3>Nao existem repositorios arquivados.</h3>
+        )}
       </ul>
       <button onClick={handleAddRepository}>Adicionar</button>
     </div>
